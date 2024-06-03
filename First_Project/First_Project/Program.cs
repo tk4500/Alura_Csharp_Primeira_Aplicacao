@@ -1,11 +1,10 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
-Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>
-{
-    { "Linkin Park", new List<int> { 10, 8, 6 } },
-    { "The Beatles", new List<int>() }
-};
+// List<string> listaDasBandas = new List<string> { "U2", "The Beatles", "Calypso" };
 
+Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
+bandasRegistradas.Add("Linkin Park", new List<int>{ 10, 8, 6 });
+bandasRegistradas.Add("The Beatles", new List<int>());
 void ExibirLogo()
 {
     Console.WriteLine(@"
@@ -43,11 +42,7 @@ void ExibirOpcoesDoMenu()
             AvaliarUmaBanda();
             break;
         case 4:
-<<<<<<< Updated upstream
-            MediaDaBanda();
-=======
-            ExibirMedia();
->>>>>>> Stashed changes
+            Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
             break;
         case -1:
             Console.WriteLine("Tchau tchau :)");
@@ -124,52 +119,4 @@ void AvaliarUmaBanda()
         ExibirOpcoesDoMenu();
     }
 }
-
-<<<<<<< Updated upstream
-void MediaDaBanda()
-{
-    Console.Clear();
-    ExibirTituloDaOpcao("Media da Banda");
-    Console.Write("Digite o nome da banda que deseja verificar a media: ");
-    string nomeDaBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeDaBanda))
-    {
-        List<int> notas = bandasRegistradas[nomeDaBanda];
-        Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notas.Average()}.");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-=======
-void ExibirMedia()
-{
-    Console.Clear();
-    ExibirTituloDaOpcao("Exibir média da banda");
-    Console.Write("Digite o nome da banda que deseja exibir a média: ");
-    string nomeDaBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeDaBanda))
-    {
-        List<int> notasDaBanda = bandasRegistradas[nomeDaBanda];
-        Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notasDaBanda.Average()}.");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal.");
->>>>>>> Stashed changes
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-    }
-    else
-    {
-<<<<<<< Updated upstream
-        Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-=======
-        Console.WriteLine($"\n A banda {nomeDaBanda} não foi encontrada.");
-        Console.WriteLine("Digite ma tecla para voltar ao menu principal.");
->>>>>>> Stashed changes
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-    }
-}
-<<<<<<< Updated upstream
 ExibirOpcoesDoMenu();
-=======
-    ExibirOpcoesDoMenu();
->>>>>>> Stashed changes
