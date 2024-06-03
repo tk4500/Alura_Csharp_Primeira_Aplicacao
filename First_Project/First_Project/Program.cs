@@ -1,10 +1,11 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
-// List<string> listaDasBandas = new List<string> { "U2", "The Beatles", "Calypso" };
+Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>
+{
+    { "Linkin Park", new List<int> { 10, 8, 6 } },
+    { "The Beatles", new List<int>() }
+};
 
-Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-bandasRegistradas.Add("Linkin Park", new List<int>{ 10, 8, 6 });
-bandasRegistradas.Add("The Beatles", new List<int>());
 void ExibirLogo()
 {
     Console.WriteLine(@"
@@ -42,7 +43,7 @@ void ExibirOpcoesDoMenu()
             AvaliarUmaBanda();
             break;
         case 4:
-            Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
+            MediaDaBanda();
             break;
         case -1:
             Console.WriteLine("Tchau tchau :)");
@@ -107,6 +108,31 @@ void AvaliarUmaBanda()
         bandasRegistradas[nomeDaBanda].Add(nota);
         Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
         Thread.Sleep(2000);
+        Console.Clear();
+        ExibirOpcoesDoMenu();
+    }
+    else
+    {
+        Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.ReadKey();
+        Console.Clear();
+        ExibirOpcoesDoMenu();
+    }
+}
+
+void MediaDaBanda()
+{
+    Console.Clear();
+    ExibirTituloDaOpcao("Media da Banda");
+    Console.Write("Digite o nome da banda que deseja verificar a media: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    if (bandasRegistradas.ContainsKey(nomeDaBanda))
+    {
+        List<int> notas = bandasRegistradas[nomeDaBanda];
+        Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notas.Average()}.");
+        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.ReadKey();
         Console.Clear();
         ExibirOpcoesDoMenu();
     }
