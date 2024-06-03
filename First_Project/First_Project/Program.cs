@@ -3,7 +3,7 @@ string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
 // List<string> listaDasBandas = new List<string> { "U2", "The Beatles", "Calypso" };
 
 Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-bandasRegistradas.Add("Link Park", new List<int>{ 10, 8, 6 });
+bandasRegistradas.Add("Linkin Park", new List<int>{ 10, 8, 6 });
 bandasRegistradas.Add("The Beatles", new List<int>());
 void ExibirLogo()
 {
@@ -20,6 +20,7 @@ void ExibirLogo()
 }
 void ExibirOpcoesDoMenu()
 {
+    ExibirLogo();
     Console.WriteLine("\nDigite 1 para registrar uma banda");
     Console.WriteLine("Digite 2 para mostrar todas as bandas");
     Console.WriteLine("Digite 3 para avaliar uma banda");
@@ -61,7 +62,6 @@ void RegistrarBanda()
     Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso");
     Thread.Sleep(2000);
     Console.Clear();
-    ExibirLogo();
     ExibirOpcoesDoMenu();
 }
 void MostrarBandasRegistradas()
@@ -80,7 +80,6 @@ void MostrarBandasRegistradas()
     Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
     Console.ReadKey();
     Console.Clear();
-    ExibirLogo();
     ExibirOpcoesDoMenu();
 }
 void ExibirTituloDaOpcao(string titulo)
@@ -103,7 +102,13 @@ void AvaliarUmaBanda()
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
     {
-
+        Console.Write($"Qual a nota que a banda {nomeDaBanda} merece:");
+        int nota = int.Parse(Console.ReadLine()!);
+        bandasRegistradas[nomeDaBanda].Add(nota);
+        Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
+        Thread.Sleep(2000);
+        Console.Clear();
+        ExibirOpcoesDoMenu();
     }
     else
     {
@@ -111,9 +116,7 @@ void AvaliarUmaBanda()
         Console.WriteLine("Digite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
-        ExibirLogo();
         ExibirOpcoesDoMenu();
     }
 }
-ExibirLogo();
 ExibirOpcoesDoMenu();
