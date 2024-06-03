@@ -1,7 +1,7 @@
 ﻿// Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
 List<string> listaDasBandas = new List<string> { "U2", "The Beatles", "Calypso" };
-void ExibirMensagemDeBoasVindas()
+void ExibirLogo()
 {
     Console.WriteLine(@"
 
@@ -27,8 +27,8 @@ void ExibirOpcoesDoMenu()
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
     switch (opcaoEscolhidaNumerica)
     {
-        case 1: 
-            Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
+        case 1:
+            RegistrarBanda();
             break;
         case 2:
             Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
@@ -47,5 +47,16 @@ void ExibirOpcoesDoMenu()
             break;
     }
 }
-ExibirMensagemDeBoasVindas();
+void RegistrarBanda()
+{
+    Console.Clear();
+    Console.WriteLine("Registro de Bandas");
+    Console.Write("Digite o nome da banda que você deseja registrar: ");
+    string nomeDaBanda = Console.ReadLine()!;
+    Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExibirOpcoesDoMenu();
+}
+ExibirLogo();
 ExibirOpcoesDoMenu();
